@@ -61,6 +61,10 @@ operatorButtons.forEach((button) => {
 
 const equalsButton = document.querySelector("#equals");
 equalsButton.addEventListener("click", () => {
+    if (!number1 || !operator || !displayVal) {
+        // prevent error if all values haven't been entered
+        return;
+    }
     // set number2 to number entered so far
     number2 = parseInt(displayVal);
     // get result and display
