@@ -3,7 +3,6 @@ let number2;
 let operator;
 let displayVal = "";
 const displayDiv = document.querySelector("#display");
-let result;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -48,8 +47,32 @@ numberButtons.forEach((button) => {
     })
 })
 
+const operatorButtons = document.querySelector("#operators").childNodes;
+operatorButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        // set number1 to number entered so far
+        number1 = parseInt(displayVal);
+        // clear display val so it will be ready for next num
+        displayVal = "";
+        // update operator value with clicked operator
+        operator = e.target.textContent;
+    })
+})
+
+const equalsButton = document.querySelector("#equals");
+equalsButton.addEventListener("click", () => {
+    // set number2 to number entered so far
+    number2 = parseInt(displayVal);
+    // get result and display
+    displayVal = operate(number1, number2, operator);
+    displayDiv.textContent = displayVal;
+})
+
 const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
     displayVal = "";
     displayDiv.textContent = "0";
+    number1 = 0;
+    number2 = 0;
+    operator = "";
 })
