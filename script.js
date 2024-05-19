@@ -17,6 +17,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 == 0) {
+        return "Undefined"
+    }
     return num1 / num2;
 }
 
@@ -38,7 +41,7 @@ function operate(num1, num2, op) {
     }
 }
 
-const numberButtons = document.querySelector("#numbers").childNodes;
+const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         // add clicked number to display
@@ -47,7 +50,7 @@ numberButtons.forEach((button) => {
     })
 })
 
-const operatorButtons = document.querySelector("#operators").childNodes;
+const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         // set number1 to number entered so far
